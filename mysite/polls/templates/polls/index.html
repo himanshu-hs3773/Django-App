@@ -1,0 +1,13 @@
+<!-- Html file --> 
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <!--  Hardcoded urls makes changing URLs on projects with a lot of templates challenging.   
+        	href="/polls/{{ question.id }}/"> hardcoded url -->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        <!-- polls:deatail is to be distinguished in app/url.py when multiple ways --> 
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
